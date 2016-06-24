@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <form name="signupForm" novalidate>
+            <div class="form-group">
+                <label for="name"></label>
+                <input type="text" class="form-control" name="name" ng-model="signup.name">
+            </div>
+            <div class="form-group">
+                <label for="email"></label>
+                <input type="text" class="form-control" name="email" ng-model="signup.email">
+            </div>
+            <div class="form-group">
+                <label for="password"></label>
+                <input type="password" class="form-control" name="password" ng-model="signup.password">
+            </div>
+            <div class="form-group">
+                <label for="paswordRepeat"></label>
+                <input type="text" class="form-control" name="passwordRepeat" ng-model="passwordRepeat">
+            </div>
+            <button class="btn btn-primary center-block" ng-click="signup()"></button>
+        </form>
+    </div>
+</div>

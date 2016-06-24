@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="well">
+            <h1>{{ user.name }}'s Profile Information</h1>
+            <ul>
+                <li>
+                    <span class="profileKey" id="name">Name: </span>
+                    <span class="profileValue" id="name" ng-hide="toggle">{{ user.name }}</span>
+                    <span class="glyphicon glyphicon-pencil" ng-click="toggle = !toggle" ng-hide="toggle"></span>
+                    <input type="text" class="form-control" name="name" ng-model="user.name" ng-show="toggle">
+                    <button class="btn btn-success center-block" ng-click="editProfile()" ng-show="toggle"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+                </li>
+                <li>
+                    <span class="profileKey" id="email">E-mail: </span>
+                    <span class="profileValue" id="email" ng-hide="toggle">{{ user.email }}</span>
+                    <span class="glyphicon glyphicon-pencil" ng-click="toggle = !toggle" ng-hide="toggle"></span>
+                    <input type="text" class="form-control" name="email" ng-model="user.email" ng-show="toggle">
+                    <button class="btn btn-success center-block" ng-click="editProfile()" ng-show="toggle"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+                </li>
+<!--
+                <li>
+                    <span class="profileKey" id="password">Password :</span>
+                    <span class="profileValue" id="password" ng-hide="toggle">{{ user.password }}</span>
+                    <span class="glyphicon glyphicon-pencil" ng-click="toggle = !toggle" ng-hide="toggle"></span>
+                    <input type="password" class="form-control" name="password" ng-model="user.password" ng-show="toggle">
+                    <button class="btn btn-success center-block" ng-click="editProfile()" ng-show="toggle"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+                </li>
+-->
+            </ul>
+        </div>
+    </div>
+</div>
