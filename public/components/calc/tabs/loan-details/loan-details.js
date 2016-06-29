@@ -1,8 +1,8 @@
 var app = angular.module('mortgage.app');
 
-app.directive('navbar', [function() {
+app.directive('loanDetails', [function() {
     return {
-        templateUrl: 'components/navbar/navbar.html',
+        templateUrl: 'components/calc/tabs/loan-details/loan-details.html',
         link: function(scope) {
             
         }

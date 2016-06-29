@@ -1,0 +1,66 @@
+<div class="tab-panel">
+    <div class="savings-controls col-xs-12">
+        <form name="savings-controls" class="well" novalidate>
+            <div class="row">
+                <div class="form-group col-sm-6 col-md-4">
+                    <label for="extra-payment">Extra Repayment Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="text" class="form-control" id="extra-payment" ng-model="savingCalc.extraPayment" ng-min="0" ng-max="10000">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign" title="Please enter the extra amount you plan to make for every repayment (for fixed rate loans, this extra will commence once the fixed period has completed)"></i></span>
+                    </div>
+                    <div class="slider">
+                        <input type="range" class="form-control" id="extra-payment" ng-min="0" ng-value="savingCalc.extraPayment" ng-max="10000" step="100">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6 col-md-4">
+                    <label for="offset-amount">Offset Account Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="text" class="form-control" id="offset-amount" ng-model="savingCalc.offsetAmount" ng-min="0" ng-max="repayCalc.loanAmount">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign" title="Enter the average account balance you'd have over a month. Interest is charged on the loan balance less the offset account balance.  For fixed rate loans, this only applies once the fixed period has completed."></i></span>
+                    </div>
+                    <div class="slider">
+                        <input type="range" class="form-control" id="offset-amount" ng-min="0" ng-value="savingCalc.offsetAmount" ng-max="repayCalc.loanAmount" step="100">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6 col-md-4">
+                   <label for="savingsFrequncy">Extra Repayment Schedule</label>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default active">
+                            <input type="radio" name="savingsFrequency" id="monthly" autocomplete="off" checked> Monthly
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="savingsFrequency" id="fortnightly" autocomplete="off"> Fortnightly
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="savingsFrequency" id="weekly" autocomplete="off"> Weekly
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6 col-md-4">
+                    <label for="lump-amount">Lump Sum Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">$</span>
+                        <input type="text" class="form-control" id="lump-amount" ng-model="savingCalc.lumpAmount" ng-min="0" ng-max="repayCalc.loanAmount">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign" title="Please enter the lump sum amount you plan to make against the loan."></i></span>
+                    </div>
+                    <div class="slider">
+                        <input type="range" class="form-control" id="lump-amount" ng-min="0" ng-value="savingCalc.lumpAmount" ng-max="repayCalc.loanAmount" step="2000">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6 col-md-4">
+                    <label for="lump-year">Lump Sum Year</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">Year</span>
+                        <input type="text" class="form-control" id="lump-year" ng-model="savingCalc.lumpYear" ng-min="1" ng-max="repayCalc.loanTerm">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign" title="Please enter the year you plan to make the lump sum payment."></i></span>
+                    </div>
+                    <div class="slider">
+                        <input type="range" class="form-control" id="lump-year" ng-min="1" ng-value="savingCalc.lump-year" ng-max="replayCalc.loanTerm" step="1">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+div.display-controls {
+    display: inline;
+}
+
+input.display-controls {
+    display: none;
+}
+

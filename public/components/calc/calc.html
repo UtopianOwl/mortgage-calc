@@ -1,0 +1,184 @@
+<div class="main-panel">
+    <!-- TABBED SECTION -->
+    <div class="row tabbable">
+        <div class="col-xs-12">
+            <!-- NAV TABS -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="nav nav-tabs">
+                        <li class="pull-right nav-addon">
+                            <!-- ADDONS LIKE PRINT AND INFO BUTTONS -->
+                        </li>
+                        <li ng-class="{ 'active' : selectedTab === 'loan'}">
+                            <a ng-click="select('loan')">
+                                <div class="tab-heading">
+                                    <span>Loan Details</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li ng-class="{ 'active' : selectedTab === 'savings'}">
+                            <a ng-click="select('savings')">
+                                <div class="tab-heading">
+                                    <span>Savings Options</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li ng-class="{ 'active' : selectedTab === 'storage'}">
+                            <a ng-click="select('storage')">
+                                <div class="tab-heading">
+                                    <span>Stored Calculations</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /NAV TABS -->
+
+            <!-- TABBED CONTENT -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="tab-content">
+                        <div ng-switch="selectedTab">
+                            <div ng-switch-when="loan">
+                                <!-- LOAN DETAILS TAB -->
+                                <loan-details></loan-details>
+                                <!-- /LOAN DETAILS TAB -->
+                            </div>
+                            <div ng-switch-when="savings">
+                                <!-- SAVING OPTIONS TAB -->
+                                <savings-options></savings-options>
+                                <!-- /SAVING OPTIONS TAB -->
+                            </div>
+                            <div ng-switch-when="storage">
+                                <!-- STORED CALCULATIONS -->
+                                <stored-calculations></stored-calculations>
+                                <!-- /STORED CALCULATIONS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /TABBED CONTENT -->
+            </div>
+            <!-- /TABBED SECTION -->
+
+            <!-- SAVINGS RESULTS BANNER -->
+            <div class="row savings-panel alert alert-info" ng-switch on="savingsView">
+                <div class="savings-panel-content default" ng-switch-when="default">
+                    <span class="text-center">
+                    <i class="glyphicon glyphicon-info-sign"></i>
+                    <span>You can reduce your loan term and total interest payable</span>
+                    <button class="btn btn-default" type="button" ng-click="">Options to Save</button>
+                    </span>
+                </div>
+                <div class="savings-panel-content results" ng-switch-when="results">
+                    <span class="savings-content">
+                    <span class="glyphicon glyphicon-piggy-bank"></span>
+                    <span>Interest Saved</span>
+                    <span>{{ money-saved }}</span>
+                    </span>
+                    <span class="savings-content">
+                    <span class="glyphicon glphicon-time"></span>
+                    <span>Time Saved</span>
+                    <span>{{ time-saved }}</span>
+                    </span>
+                </div>
+            </div>
+            <!-- /SAVINGS RESULTS BANNER -->
+        </div>
+    </div>
+
+    <!-- RESULTS-PANEL -->
+    <div class="results-panel">
+        <div class="results-summary-panel col-sm-4 col-sm-push-8 well">
+            <div class="row result-line">
+                <div class="result-label">
+                    <span class="result-label">Regular Payment</span>
+                </div>
+                <div class="result-data">
+                    <span class="large-result">{{ summary.regularPayment }}</span>
+                    <span class="small-result">{{ summary.payFreq }}</span>
+                </div>
+            </div>
+            <div class="row result-line">
+                <div class="result-label">
+                    <span class="result-label">Total Interest Payable</span>
+                </div>
+                <div class="result-data">
+                    <span class="large-result">{{ summary.totalInterest }}</span>
+                    <span class="small-result"> over </span>
+                    <span class="large-result">{{ summary.payTerm }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="results-display-panel col-sm-8 col-sm-pull-4 well">
+            <div class="result-controls">
+                <form autocomplete="off" novalidate></form>
+                <fieldset>
+                    <label id="house" class="btn btn-default" ng-class="{ 'active' : selectedView === 'house' }">
+                        <input class="display-controls" type="radio" value="house" ng-model="selectedView" ng-change="change()" checked>
+                        <span class="glyphicon glyphicon-home"></span>
+                    </label>
+                    <label id="graph" class="btn btn-default" ng-class="{ 'active' : selectedView === 'graph' }">
+                        <input class="display-controls" type="radio" value="graph" ng-model="selectedView" ng-change="change()">
+                        <span class="glyphicon glyphicon-stats"></span>
+                    </label>
+                    <label id="table" class="btn btn-default" ng-class="{ 'active' : selectedView === 'table' }">
+                        <input class="display-controls" type="radio" value="table" ng-model="selectedView" ng-change="change()">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                    </label>
+                </fieldset>
+            </div>
+            <!-- /RESULT CONTROLS -->
+
+            <!-- ngSwitch on SELECTED-VIEW -->
+            <div ng-switch="selectedView">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div ng-switch="selectedView">
+                                    <!-- ngSwitchWhen: HOUSE -->
+                                    <div ng-switch-default>
+                                        <!-- HOUSE IMAGE STUFF -->
+                                        <h1 class="center-block">House Cat</h1>
+                                        <img class="center-block" src="http://placekitten.com/400/500" alt="Kitten">
+                                    </div>
+                                    <!-- /ngSwitchWhen: HOUSE -->
+
+                                    <!-- ngSwitchWhen: GRAPH -->
+                                    <div ng-switch-when="graph">
+                                        <!-- GRAPH IMAGE STUFF -->
+                                        <!-- ANGULAR-CHART STUFF -->
+                                        <div class="chart-elements">
+                                            <img class="center-block" src="http://placekitten.com/400/500" alt="Kitten">
+                                        </div>
+                                        <div class="char-label">
+                                            <h1 class="center-block">Graph Cat</h1>
+                                        </div>
+                                    </div>
+                                    <!-- /ngSwitchWhen: GRAPH -->
+
+                                    <!-- ngSwitchWhen: TABLE -->
+                                    <div ng-switch-when="table">
+                                        <!-- <table> -->
+                                        <div class="table">
+                                            <!-- TABLE STUFF -->
+                                            <h1 class="center-block">Table Cat</h1>
+                                            <img class="center-block" src="http://placekitten.com/400/500" alt="Kitten">
+                                        </div>
+                                        <!-- </table> -->
+                                    </div>
+                                    <!-- /ngSwitchWhen: TABLE -->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <!-- SIDE STUFF -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /RESULTS-PANEL -->
