@@ -20,4 +20,23 @@ var userSchema = new Schema({
     }
 });
 
+userSchema.pre("save", function (next) {
+   if (!user.isModified("password")) {
+       return next();
+   } else {
+       //hash password
+       bcrypt.hash(user.password, 10, function (err, hash) {
+           if (err) return next(err);
+           user.password = hash;
+           next();
+       });
+   }
+});
+
+userSchema.methods.withoutPassword = function () {
+    var user = this.toObject();
+    delete user.password;
+    return user;
+}
+
 module.exports = mongoose.model("User", userSchema);
